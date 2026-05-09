@@ -1,0 +1,17 @@
+{
+  "name": "proyecto-node-fs-enero-2026",
+  "version": "1.0.0",
+  "description": "proyecto de aprendisaje de node - fs 2026",
+  "keywords": [
+    "node",
+    "js",
+    "express"
+  ],
+  "license": "MIT",
+  "author": "wilbert escobar <wilbertgescobar48@gmail.com>",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
