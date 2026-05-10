@@ -7,19 +7,19 @@
     "js",
     "express"
   ],
+  "homepage": "https://github.com/wilbertgescobar48-debug/proyecto-node-fs-enero-2026#readme",
+  "bugs": {
+    "url": "https://github.com/wilbertgescobar48-debug/proyecto-node-fs-enero-2026/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wilbertgescobar48-debug/proyecto-node-fs-enero-2026.git"
+  },
   "license": "MIT",
   "author": "wilbert escobar <wilbertgescobar48@gmail.com>",
   "type": "module",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/wilbertgescobar48-debug/proyecto-node-fs-enero-2026.git"
-  },
-  "bugs": {
-    "url": "https://github.com/wilbertgescobar48-debug/proyecto-node-fs-enero-2026/issues"
-  },
-  "homepage": "https://github.com/wilbertgescobar48-debug/proyecto-node-fs-enero-2026#readme"
+  }
 }
