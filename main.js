@@ -1,4 +1,5 @@
 import { resolve } from 'node:dns';
+import { read, readFile } from 'node:fs';
 import { createServer } from 'node:http';
 
 const server = createServer((req, res) => {
@@ -17,30 +18,60 @@ if (method === 'GET' && url === '/api') {
   return;
 }
 
+if(method === 'GET' && url === '/archivo') {
+  console.log('leyendo el archivo...');
+  let contenido;
+  //readFileSync
+  readFile('text.txt', 'utf-8', (err, data) => {
+    console.log('error', err);
+    console.log(data);
+    res.writeHead(200, {'content-type': 'text/plain'});
+    res.end (data);
+  });
+  readFile('text.txt', 'utf-8', (err, data) => {
+    console.log('error', err);
+    console.log(data);
+  });
+    return;
+
+}
 //ruta de health
 if (method === 'GET' && url === '/health') {
     res.writeHead(200, {"content-type": "application/json"});
-    res.end(JSON.stringify({ message: 'mensaje en json desde health', code: 200, status: 'ok' }));
+    res.end(JSON.stringify({ 
+      message: 'mensaje en json desde health', 
+      code: 200, 
+      status: 'ok' 
+    })
+  );
     return;
 }
   res.end("hola mundo");
 }); 
 
-/*const listen = (server, port) => {
+/*const listen =(server, port) => {
   return new Promise((resolve, reject) => {
     server.listen(port, () => resolve('todo fue bien'));
   });
 };
 
-listen(server, 3000).then((mensaje) => {
+listen(server, 3000)
+.then((mensaje) => {
   console.log(mensaje);
 });*/
-await new Promise((resolve) => server.listen(3000, resolve));
-/*
-server.listen(3000, () => {
-  if (err) {
-    console.error(err);
-    return;
-  }
+
+
+/*await new Promise((resolve) => 
+  server.listen(3000, () => resolve('hola el servidor esta encendido'))
+). then((mensaje) => console.log(mensaje));
+//.then((mensaje) => console.log(mensaje))
+//.catch(() => {});*/
+
+const message = await new Promise((resolve) =>
+  server.listen(3000, () => resolve('servidor encendido'))
+);
+console.log(message);
+
+/*server.listen(3000, () => {
   console.log('el servidor va bien');
 });*/
