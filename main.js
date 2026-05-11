@@ -1,8 +1,7 @@
-import { resolve } from 'node:dns';
-import { read, readFile } from 'node:fs';
+import { readFile } from 'node:fs/promises';
 import { createServer } from 'node:http';
 
-const server = createServer((req, res) => {
+const server = createServer(async(req, res) => {
   const { method, url } = req;
 
 if (method === 'GET' && url === '/') {
@@ -20,21 +19,22 @@ if (method === 'GET' && url === '/api') {
 
 if(method === 'GET' && url === '/archivo') {
   console.log('leyendo el archivo...');
-  let contenido;
-  //readFileSync
-  readFile('text.txt', 'utf-8', (err, data) => {
-    console.log('error', err);
-    console.log(data);
-    res.writeHead(200, {'content-type': 'text/plain'});
-    res.end (data);
-  });
-  readFile('text.txt', 'utf-8', (err, data) => {
-    console.log('error', err);
+  readFile('text.txt', 'utf-8').then((data) => {
     console.log(data);
   });
-    return;
+  const data = await readFile('text.txt', 'utf-8');
+  console.log(data);
+  res.writeHead(200, {'content-type': 'text/plain'});
+  res.end (data);
 
+  const data1 = await readFile('text.txt', 'utf-8')
+  
+    console.log(data1);
+
+  return;
 }
+
+
 //ruta de health
 if (method === 'GET' && url === '/health') {
     res.writeHead(200, {"content-type": "application/json"});
